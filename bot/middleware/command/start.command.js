@@ -1,5 +1,9 @@
 const { bot } = require("../../connections/token.connection.js");
-const { saveUser } = require("../../common/sequelize/saveUser.sequelize");
+const {
+   saveUser,
+   getUser,
+} = require("../../common/sequelize/user-model.sequelize.js");
+const { CronJob } = require("cron");
 
 module.exports = bot.start(async (ctx) => {
    try {
@@ -7,10 +11,11 @@ module.exports = bot.start(async (ctx) => {
       const username = ctx.chat.username ?? "anon";
 
       const result = await saveUser(login, username);
-      console.log(result);
 
       return;
    } catch (err) {
       console.log(err);
    }
 });
+
+

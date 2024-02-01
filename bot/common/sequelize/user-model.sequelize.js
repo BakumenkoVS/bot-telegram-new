@@ -23,3 +23,11 @@ exports.saveUser = async (login, username) => {
 
    return textAfterUpdate;
 };
+
+exports.getUser = async () =>
+   UserModel.findAll({
+      raw: true,
+      attributes: {
+         exclude: ["id", "username", "privileged", "createdAt", "updatedAt"],
+      },
+   });
