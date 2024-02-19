@@ -9,7 +9,7 @@ const {
 require("dotenv").config();
 const path = require("path");
 
-const PORT = 5050;
+const PORT = 8080;
 
 const app = express();
 
