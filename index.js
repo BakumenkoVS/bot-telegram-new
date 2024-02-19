@@ -5,6 +5,7 @@ const { CronJob } = require("cron");
 const {
    updateUsersByDelivered,
    updateUserByDead,
+   getUser,
 } = require("./bot/common/sequelize/user-model.sequelize.js");
 require("dotenv").config();
 const path = require("path");
