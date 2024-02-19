@@ -180,6 +180,12 @@ module.exports = bot.on("callback_query", async (ctx) => {
                      inline_keyboard: [
                         [
                            {
+                              text: "Узнать про интенсив",
+                              callback_data: "InformationAboutIntensive",
+                           },
+                        ],
+                        [
+                           {
                               text: "Записаться на интенсив",
                               callback_data: "buyFile",
                            },
