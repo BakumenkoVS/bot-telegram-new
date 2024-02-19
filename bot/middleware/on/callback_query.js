@@ -91,7 +91,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
                      },
                   }
                );
-            }, 10000);
+            }, 86400000);
             break;
 
          case "secondWorkout":
@@ -129,7 +129,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
                      },
                   }
                );
-            }, 10000);
+            }, 86400000);
 
             break;
 
@@ -165,8 +165,8 @@ module.exports = bot.on("callback_query", async (ctx) => {
                      },
                   }
                );
-            }, 10000);
-            //86400000
+            }, 86400000);
+
             break;
 
          case "Info":
