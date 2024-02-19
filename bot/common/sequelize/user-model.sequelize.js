@@ -8,8 +8,10 @@ exports.saveUser = async (login, username) => {
    const textAfterUpdate = `User ${login}-${username} has been updated`;
 
    const foundUser = await UserModel.findOne({ where: { login } });
+   console.log(foundUser, 'Нашел мудака');
 
    if (!foundUser) {
+      console.log('СОЗДАЕТ ЮЗЕРА')
       await UserModel.create({
          login,
          username,
@@ -18,6 +20,7 @@ exports.saveUser = async (login, username) => {
    }
 
    if (foundUser.username !== username) {
+      console.log('МЕНЯЕТ ИМЯ')
       await UserModel.update({ username }, { where: { login } });
    }
 
@@ -27,7 +30,34 @@ exports.saveUser = async (login, username) => {
 exports.getUser = async () =>
    UserModel.findAll({
       raw: true,
+      // attributes: {
+      //    exclude: ["id", "username", "privileged", "createdAt", "updatedAt"],
+      // },
+   });
+
+
+exports.getUsersByDelivered = async (value = false) =>
+   UserModel.findAll({
+      raw: true,
       attributes: {
-         exclude: ["id", "username", "privileged", "createdAt", "updatedAt"],
+         exclude: [
+            "id",
+            "username",
+            "privileged",
+            "createdAt",
+            "updatedAt",
+            "privileged",
+            "delivered",
+            "dead",
+         ],
+      },
+      where: {
+         delivered: value,
       },
    });
+
+exports.updateUsersByDelivered = async (login) =>
+   UserModel.update({ delivered: true }, { where: { login } });
+
+exports.updateUserByDead = async (login) =>
+   UserModel.update({ dead: true }, { where: { login } });
