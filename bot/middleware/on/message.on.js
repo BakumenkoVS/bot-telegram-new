@@ -15,7 +15,7 @@ module.exports = bot.on("text", async (ctx) => {
 
          await ctx.replyWithPhoto(
             {
-               source: "./img/moreinfo.jpg",
+               source: "../../../img/moreInfo.jpg",
             },
             {
                caption:
