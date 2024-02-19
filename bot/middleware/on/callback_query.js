@@ -169,7 +169,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
             //86400000
             break;
 
-         case "info":
+         case "Info":
             await ctx.replyWithPhoto(
                { source: "/root/bot-telegram-new/img/info.jpg" },
 
