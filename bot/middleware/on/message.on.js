@@ -13,7 +13,7 @@ module.exports = bot.on("text", async (ctx) => {
 
          await ctx.replyWithPhoto(
             {
-               source: path.resolve(__dirname, "../../img/moreinfo.jpg"),
+               source:  "/root/bot-telegram-new/img/moreInfo.jpg",
             },
             {
                caption:
