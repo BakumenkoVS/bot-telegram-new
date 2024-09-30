@@ -5,17 +5,15 @@ require("dotenv").config();
 const path = require("path");
 
 module.exports = bot.on("text", async (ctx) => {
-   console.log(ctx);
    try {
       if (ctx.update.message.text == "/start") {
          const login = String(ctx.message.from.id);
          const username = ctx.message.from.username ?? "anon";
-         console.log(login, username);
          const result = await saveUser(login, username);
 
          await ctx.replyWithPhoto(
             {
-               source: "/root/bot-telegram-new/img/moreInfo.jpg",
+               source: path.resolve("./img/moreinfo.jpg"),
             },
             {
                caption:
@@ -36,7 +34,6 @@ module.exports = bot.on("text", async (ctx) => {
       }
 
       if (ctx.update.message.text == "/start Lida") {
-         console.log(ctx.message);
          ctx.replyWithInvoice({
             chat_id: ctx.message.chat.id, // Уникальный идентификатор целевого чата или имя пользователя целевого канала
             provider_token: process.env.PROVIDER_TOKEN, // токен выданный через бот @SberbankPaymentBot
@@ -44,7 +41,7 @@ module.exports = bot.on("text", async (ctx) => {
             title: "Записаться на интенсив", // Название продукта, 1-32 символа
             description: "Покупка интенсива", // Описание продукта, 1-255 знаков
             currency: "RUB", // Трехбуквенный код валюты ISO 4217
-            prices: [{ label: "Купить интенсив", amount: 2990 * 100 }], // Разбивка цен, сериализованный список компонентов в формате JSON 100 копеек * 100 = 100 рублей
+            prices: [{ label: "Купить интенсив", amount: 65 * 100 }], // Разбивка цен, сериализованный список компонентов в формате JSON 100 копеек * 100 = 100 рублей
             payload: {
                // Полезные данные счета-фактуры, определенные ботом, 1–128 байт. Это не будет отображаться пользователю, используйте его для своих внутренних процессов.
                unique_id: `${ctx.message.chat.id}_${Number(new Date())}`,

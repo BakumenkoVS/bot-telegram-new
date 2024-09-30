@@ -34,6 +34,17 @@ module.exports = db.define(
          defaultValue: false,
          allowNull: true,
       },
+      paid: {
+         type: DataTypes.BOOLEAN,
+         defaultValue: false,
+         allowNull: false,
+      },
+      paidDiscount: {
+         type: DataTypes.BOOLEAN,
+         defaultValue: false,
+         allowNull: false,
+      },
+      
    },
    {
       timestamp: true,
