@@ -28,7 +28,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
 
       case "moreInformation":
         await ctx.replyWithPhoto(
-          { source: path.join("img", "1tr.jpg") },
+          { source: path.join("img", "moreInformation.JPG") },
           {
             caption: "ТУТ МЫ РАССКАЗЫВАЕМ ПРО ЯГОДИЦЫ И ПРО ЖИВОТ",
             parse_mode: "HTML",
@@ -36,19 +36,19 @@ module.exports = bot.on("callback_query", async (ctx) => {
               inline_keyboard: [
                 [
                   {
-                    text: "ТРЕНИРОВКА НА ЖИВОТ",
+                    text: "Сделать живот плоским",
                     callback_data: "coreWorkout",
                   },
                 ],
                 [
                   {
-                    text: "ТРЕНИРОВКА НА ЯГОДИЦЫ",
+                    text: "Подтянуть ноги и ягодицы",
                     callback_data: "bootyWorkout",
                   },
                 ],
                 [
                   {
-                    text: "Узнать про интенсив",
+                    text: "Узнать про фитнес курс",
                     callback_data: "InformationAboutIntensive",
                   },
                 ],
