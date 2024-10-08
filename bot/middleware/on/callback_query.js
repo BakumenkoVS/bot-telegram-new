@@ -2,6 +2,10 @@ const { bot } = require("../../connections/token.connection.js");
 const path = require("path");
 
 module.exports = bot.on("callback_query", async (ctx) => {
+  const oneSecond = 1000; // 1000 миллисекунд = 1 секунда
+  const oneMinute = 60 * oneSecond; // 60 секунд = 1 минута
+  const oneHour = 60 * oneMinute; // 60 минут = 1 час
+  const oneDay = 24 * oneHour; // 24 часа = 1 сутки
   try {
     switch (ctx.update.callback_query.data) {
       case "buyFile":
@@ -26,15 +30,85 @@ module.exports = bot.on("callback_query", async (ctx) => {
         await ctx.replyWithPhoto(
           { source: path.join("img", "1tr.jpg") },
           {
-            caption:
-              "Осанка - это положение вашего тела, в котором вы находитесь большую часть дня. От нееs зависит тонус мышц и то, как выглядит ваше тело.\n\nИз-за нарушений в осанке появляются такие проблемные зоны, как:\n• двойной подбородок\n• отечность на лице\n• холка на шее\n• валики около подмышек\n• дряблые руки\n• выпирающий живот\n• складки на спине\n• бока на талии\n• рыхлые ягодицы\n• целлюлит на бедрах\n• валики над коленями\n• ушки на бедрах\n• отечные икроножные\n\nВозможно ли скорректировать фигуру и избавиться от проблемных зон с помощью работы с осанкой?\n\nКонечно, да.\n\nКак это сделать?\n\nУзнаешь в 1 тренировке ⬇️",
+            caption: "ТУТ МЫ РАССКАЗЫВАЕМ ПРО ЯГОДИЦЫ И ПРО ЖИВОТ",
             parse_mode: "HTML",
             reply_markup: {
               inline_keyboard: [
                 [
                   {
-                    text: "Открыть 1 тренировку",
-                    callback_data: "firstWorkout",
+                    text: "ТРЕНИРОВКА НА ЖИВОТ",
+                    callback_data: "coreWorkout",
+                  },
+                ],
+                [
+                  {
+                    text: "ТРЕНИРОВКА НА ЯГОДИЦЫ",
+                    callback_data: "bootyWorkout",
+                  },
+                ],
+                [
+                  {
+                    text: "Узнать про интенсив",
+                    callback_data: "InformationAboutIntensive",
+                  },
+                ],
+              ],
+            },
+          }
+        );
+
+        setTimeout(async () => {
+          await ctx.replyWithPhoto(
+            { source: path.join("img", "2tr.jpg") },
+
+            {
+              caption: "Слушай попробуй все таки тренировки то",
+
+              reply_markup: {
+                inline_keyboard: [
+                  [
+                    {
+                      text: "Живот",
+                      callback_data: "coreWorkout",
+                    },
+                  ],
+                  [
+                    {
+                      text: "ЯГОДИЦЫ",
+                      callback_data: "bootyWorkout",
+                    },
+                  ],
+                  [
+                    {
+                      text: "Узнать про курс",
+                      callback_data: "InformationAboutIntensive",
+                    },
+                  ],
+                ],
+              },
+            }
+          );
+        }, oneMinute);
+        break;
+
+      case "bootyWorkout":
+        await ctx.replyWithPhoto(
+          { source: path.join("img", "core.JPG") },
+          {
+            caption: "ТУТ МЫ РАССКАЗЫВАЕМ ПРО ЯГОДИЦЫ",
+            parse_mode: "HTML",
+            reply_markup: {
+              inline_keyboard: [
+                [
+                  {
+                    text: "ЮТУБ",
+                    url: "https://youtu.be/B94b6vk0olY?si=rK9UcdFx6twcItwJ",
+                  },
+                ],
+                [
+                  {
+                    text: "РУТУБ",
+                    url: "https://rutube.ru/video/private/ef60df041391c5e536375bcd09c5c90c/?p=GauIeJp0H88pBeKZkE-kAA",
                   },
                 ],
                 [
@@ -49,80 +123,36 @@ module.exports = bot.on("callback_query", async (ctx) => {
         );
         break;
 
-      case "firstWorkout":
-        await ctx.reply(
-          "https://youtu.be/hlbpFn6QJGo?si=VGo-L00ZVgYNrrCS",
-
+      case "coreWorkout":
+        await ctx.replyWithPhoto(
+          { source: path.join("img", "core.JPG") },
           {
+            caption: "ТУТ МЫ РАССКАЗЫВАЕМ ПРО  ЖИВОТ",
+            parse_mode: "HTML",
             reply_markup: {
               inline_keyboard: [
                 [
                   {
-                    text: "Записаться на интенсив",
-                    callback_data: "buyFile",
+                    text: "ЮТУБ",
+                    url: "https://youtu.be/N5w7D_p3biE?si=I299-GartCLTCOex",
+                  },
+                ],
+                [
+                  {
+                    text: "РУТУБ",
+                    url: "https://rutube.ru/video/private/631080c53d1eff10964b64328546f102/?p=OhkkmqqAIhKYUnyTnwlebQ",
+                  },
+                ],
+                [
+                  {
+                    text: "Узнать про интенсив",
+                    callback_data: "InformationAboutIntensive",
                   },
                 ],
               ],
             },
           }
         );
-        setTimeout(async () => {
-          await ctx.replyWithPhoto(
-            { source: "/root/bot-telegram-new/img/2tr.jpg" },
-
-            {
-              caption:
-                "От чего зависит тонус и качество мышц пресса и ягодичных?\n\nКонечно, от мобильности и положения таза, ведь это центр женского тела.\n\nКому нужно работать с тазом:\n\n• если есть боли в тазу и скованность в поясничном отделе\n• не получается убрать живот, как бы вы не худели и не качали пресс\n• вообще не чувствуете ягодицы в упражнениях \n• хочется улучшить тонус и качество ягодичных мышц\n• вас волнуют складки на спине и отечность в зоне талии\n• у вас нет лишнего веса, но живот увеличен в объеме или есть валик внизу живота\n• есть подтекания при кашле или чихании, боли при половом акте\n\nЕсли тебя волнуют хотя бы два пункта из списка, то открывай 2 тренировку ⬇️",
-
-              reply_markup: {
-                inline_keyboard: [
-                  [
-                    {
-                      text: "Открыть 2 тренировку",
-                      callback_data: "secondWorkout",
-                    },
-                  ],
-                ],
-              },
-            }
-          );
-        }, 86400000);
-        break;
-
-      case "secondWorkout":
-        await ctx.reply("https://youtu.be/bmWPbK55hzA?si=AJ3w9p27bMt3KmjZ", {
-          reply_markup: {
-            inline_keyboard: [
-              [
-                {
-                  text: "Записаться на интенсив",
-                  callback_data: "buyFile",
-                },
-              ],
-            ],
-          },
-        });
-        setTimeout(async () => {
-          await ctx.replyWithPhoto(
-            { source: path.join("img", "3tr.jpg") },
-
-            {
-              caption:
-                "ВСЕ ХОТЯТ ПЛОСКИЙ ЖИВОТ.\n\nНо не все знают, как его готовить.\n\nНедостаточно просто качать пресс, делать скручивания или подьемы ног. Для плоского и подтянутого живота важна слаженная работа диафрагмы, глубоких мышц пресса и тазового дна. Все не так сложно, как кажется, давай попробуем.\n\nБери коврик и открывай 3 тренировку ⬇️",
-              reply_markup: {
-                inline_keyboard: [
-                  [
-                    {
-                      text: "Открыть 3 тренировку",
-                      callback_data: "thirdWorkout",
-                    },
-                  ],
-                ],
-              },
-            }
-          );
-        }, 86400000);
-
         break;
 
       case "thirdWorkout":
