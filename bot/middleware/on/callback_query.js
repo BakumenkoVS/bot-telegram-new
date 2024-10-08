@@ -80,7 +80,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
                   ],
                   [
                     {
-                      text: "Узнать про курс",
+                      text: "Узнать про фитнес курс",
                       callback_data: "InformationAboutIntensive",
                     },
                   ],
@@ -93,9 +93,9 @@ module.exports = bot.on("callback_query", async (ctx) => {
 
       case "bootyWorkout":
         await ctx.replyWithPhoto(
-          { source: path.join("img", "core.JPG") },
+          { source: path.join("img", "booty.jpg") },
           {
-            caption: "ТУТ МЫ РАССКАЗЫВАЕМ ПРО ЯГОДИЦЫ",
+            caption: "За упругие и стройные ноги отвечает тонус ягодичных мышц.\n\nЕсли у тебя есть целлюлит, кожа бугристая и неровная, валики над коленями, рыхлые ягодицы и ушки на боковой части бедер, то нужно укреплять ягодичные мышцы.\n\nОткрывай тренировку ниже, чтобы сделать ноги и ягодицы более подтянутыми.",
             parse_mode: "HTML",
             reply_markup: {
               inline_keyboard: [
@@ -113,7 +113,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
                 ],
                 [
                   {
-                    text: "Узнать про интенсив",
+                    text: "Узнать про фитнес курс",
                     callback_data: "InformationAboutIntensive",
                   },
                 ],
@@ -127,7 +127,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
         await ctx.replyWithPhoto(
           { source: path.join("img", "core.JPG") },
           {
-            caption: "ТУТ МЫ РАССКАЗЫВАЕМ ПРО  ЖИВОТ",
+            caption: "Плоский живот - это слаженная работа и хороший тонус всех трех слоев мышц пресса.\n\nЕсли у тебя животик выпирает как у беременной на первых месяцах, живот делится на две части в районе пупка или есть валик внизу живота, то <b>нужно укреплять глубокие мышцы пресса</b>.",
             parse_mode: "HTML",
             reply_markup: {
               inline_keyboard: [
@@ -145,7 +145,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
                 ],
                 [
                   {
-                    text: "Узнать про курс",
+                    text: "Узнать про фитнес курс",
                     callback_data: "InformationAboutIntensive",
                   },
                 ],
