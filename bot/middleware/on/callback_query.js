@@ -275,7 +275,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
 
       case "equipment":
         await ctx.replyWithPhoto(
-          { source: path.join("img", "obarudovanie.JPG") },
+          { source: path.join("img", "obarudovanie.jpg") },
           {
             caption:
               "\n\nДля тренировок нужны будут две гантели, массажный ролл и мфр мяч.\n\nДо старта фитнес курса я подскажу, как правильно выбрать оборудование и направлю ссылки на разные маркетплейсы.",
