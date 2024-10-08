@@ -33,7 +33,6 @@ app.use(
 
 const smm = async (ctx, text) => {
   try {
-    console.log("РАБОТАЕТ", ctx);
     const users = await getUser();
     let userIds = users.map(({ login }) => login);
 
@@ -57,6 +56,7 @@ const smm = async (ctx, text) => {
             for await (userId of rangeUserIds) {
               try {
                 await ctx.telegram.sendMessage(userId, text, {
+                  parse_mode: 'HTML',
                   // reply_markup: {
                   //    inline_keyboard: [
                   //       [
