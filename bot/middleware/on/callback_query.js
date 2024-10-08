@@ -9,10 +9,6 @@ module.exports = bot.on("callback_query", async (ctx) => {
   try {
     switch (ctx.update.callback_query.data) {
       case "buyFile":
-        await ctx.replyWithPhoto({
-          source: path.join("img", "ticet.PNG"), // Замените на URL вашей картинки
-        });
-
         await ctx.replyWithInvoice({
           chat_id: ctx.update.callback_query.message.chat.id, // Уникальный идентификатор целевого чата или имя пользователя целевого канала
           provider_token: process.env.PROVIDER_TOKEN, // токен выданный через бот @SberbankPaymentBot

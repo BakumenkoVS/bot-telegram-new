@@ -164,32 +164,14 @@ const PAYMENT_TIMEOUT = 1 * 60 * 1000;
 
 // Функция для отправки уведомления о незавершенном платеже
 async function notifyIncompletePayment(userId) {
-  await bot.telegram.sendMessage(
+  await bot.telegram.sendPhoto(
     userId,
-    "Привет твой платеж не прошел. вероятнее всего ты использовала для оплаты карту иностранного банка.\n\n Сожалеем но карты иностранных банков не принимаются. \n\n Ты можешь выбрать альтернативный удобный для себя способ оплаты! \n\n Напиши мне я тебе все расскажу https://t.me/lidabakumenko",
     {
-      // reply_markup: {
-      //   inline_keyboard: [
-      //     [
-      //       {
-      //         text: "ПэйПал1",
-      //         callback_data: "*",
-      //       },
-      //       {
-      //         text: "ПэйПал2",
-      //         callback_data: "*",
-      //       },
-      //       {
-      //         text: "ПэйПал3",
-      //         callback_data: "*",
-      //       },
-      //       {
-      //         text: "ПэйПал4",
-      //         callback_data: "*",
-      //       },
-      //     ],
-      //   ],
-      // },
+      source: path.join("img", "!.WEBP"),
+    },
+    {
+      caption:
+        "Оплата не прошла.\n\nЧтобы оплатить переводом или картой иностранного банка, напиши мне, пожалуйста, я помогу сделать это.\n\nhttps://t.me/lidabakumenko",
     }
   );
 }
