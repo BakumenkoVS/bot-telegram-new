@@ -30,7 +30,7 @@ module.exports = bot.on("callback_query", async (ctx) => {
         await ctx.replyWithPhoto(
           { source: path.join("img", "moreInformation.JPG") },
           {
-            caption: "ТУТ МЫ РАССКАЗЫВАЕМ ПРО ЯГОДИЦЫ И ПРО ЖИВОТ",
+            caption: "Для стройной и подтянутой фигуры не нужны строгие диеты и бешеные нагрузки 7 раз в неделю.\n\nНужно просто два часа в неделю, гантели, массажный ролл, мяч для мфр и грамотный подход к тренировкам (!)\n\nЧто тебя сейчас волнует? Что хочется улучшить или скорректировать в фигуре?",
             parse_mode: "HTML",
             reply_markup: {
               inline_keyboard: [
@@ -68,13 +68,13 @@ module.exports = bot.on("callback_query", async (ctx) => {
                 inline_keyboard: [
                   [
                     {
-                      text: "Живот",
+                      text: "Сделать живот плоским",
                       callback_data: "coreWorkout",
                     },
                   ],
                   [
                     {
-                      text: "ЯГОДИЦЫ",
+                      text: "Подтянуть ноги и ягодицы",
                       callback_data: "bootyWorkout",
                     },
                   ],
