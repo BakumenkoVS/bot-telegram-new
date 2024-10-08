@@ -27,7 +27,7 @@ const wss = new WebSocket.Server({ server });
 
 app.use(
   cors({
-    origin: ["http://localhost:8080",],
+    origin: ["http://localhost:8080"],
   })
 );
 
@@ -56,17 +56,23 @@ const smm = async (ctx, text) => {
             for await (userId of rangeUserIds) {
               try {
                 await ctx.telegram.sendMessage(userId, text, {
-                  parse_mode: 'HTML',
-                  // reply_markup: {
-                  //    inline_keyboard: [
-                  //       [
-                  //          {
-                  //             text: "Записаться на интенсив",
-                  //             callback_data: "buyFile",
-                  //          },
-                  //       ],
-                  //    ],
-                  // },
+                  parse_mode: "HTML",
+                  reply_markup: {
+                    inline_keyboard: [
+                      [
+                        {
+                          text: "Узнать про курс",
+                          callback_data: "InformationAboutIntensive",
+                        },
+                      ],
+                      [
+                        {
+                          text: "Купить курс",
+                          callback_data: "buyFile",
+                        },
+                      ],
+                    ],
+                  },
                 });
                 console.log(`Сообщение отправлено этому пользователю ${userId}`);
                 await updateUsersByDelivered(userId);
@@ -160,30 +166,30 @@ const PAYMENT_TIMEOUT = 1 * 60 * 1000;
 async function notifyIncompletePayment(userId) {
   await bot.telegram.sendMessage(
     userId,
-    "Ваш платеж не был завершен. Убедитесь что вы вводите правильные данные или оплачиваете с карты Российского банка. Если у вас нет возможности оплатить с карты российского банка обратите внимание на способы оплаты предложеные в кнопках снизу",
+    "Привет твой платеж не прошел. вероятнее всего ты использовала для оплаты карту иностранного банка.\n\n Сожалеем но карты иностранных банков не принимаются. \n\n Ты можешь выбрать альтернативный удобный для себя способ оплаты! \n\n Напиши мне я тебе все расскажу https://t.me/lidabakumenko",
     {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: "ПэйПал1",
-              callback_data: "*",
-            },
-						{
-              text: "ПэйПал2",
-              callback_data: "*",
-            },
-						{
-              text: "ПэйПал3",
-              callback_data: "*",
-            },
-						{
-              text: "ПэйПал4",
-              callback_data: "*",
-            },
-          ],
-        ],
-      },
+      // reply_markup: {
+      //   inline_keyboard: [
+      //     [
+      //       {
+      //         text: "ПэйПал1",
+      //         callback_data: "*",
+      //       },
+      //       {
+      //         text: "ПэйПал2",
+      //         callback_data: "*",
+      //       },
+      //       {
+      //         text: "ПэйПал3",
+      //         callback_data: "*",
+      //       },
+      //       {
+      //         text: "ПэйПал4",
+      //         callback_data: "*",
+      //       },
+      //     ],
+      //   ],
+      // },
     }
   );
 }
@@ -223,7 +229,7 @@ bot.on("successful_payment", async (ctx) => {
     await ctx.replyWithPhoto(
       { source: path.join("img", "cat.jpg") },
       {
-        caption: "Благодарю за доверие! Оплата прошла успешно, и вы присоединились к интенсиву.",
+        caption: "Благодарю за доверие! Оплата прошла успешно, и вы присоединились к курсу.",
       }
     );
   }
