@@ -160,7 +160,7 @@ require("./bot/connections/local.connection");
 //Убрать оплату в другой файл
 
 const pendingPayments = new Map();
-const PAYMENT_TIMEOUT = 1 * 60 * 1000;
+const PAYMENT_TIMEOUT = 5 * 60 * 1000;
 
 // Функция для отправки уведомления о незавершенном платеже
 async function notifyIncompletePayment(userId) {
