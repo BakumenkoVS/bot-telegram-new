@@ -160,7 +160,7 @@ require("./bot/connections/local.connection");
 //Убрать оплату в другой файл
 
 const pendingPayments = new Map();
-const PAYMENT_TIMEOUT = 5 * 60 * 1000;
+const PAYMENT_TIMEOUT = 4 * 60 * 1000;
 
 // Функция для отправки уведомления о незавершенном платеже
 async function notifyIncompletePayment(userId) {
@@ -193,7 +193,7 @@ bot.on("pre_checkout_query", async (ctx) => {
 }); // ответ на предварительный запрос по оплате
 
 bot.on("successful_payment", async (ctx) => {
-  if (ctx.message.successful_payment.total_amount === 10000) {
+  if (ctx.message.successful_payment.total_amount === 4999) {
     updateUserByPaid(ctx.message.from.id);
   }
   if (ctx.message.successful_payment.total_amount === 6500) {
