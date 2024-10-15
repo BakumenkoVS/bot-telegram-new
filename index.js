@@ -178,7 +178,15 @@ async function notifyIncompletePayment(userId) {
 
 bot.on("pre_checkout_query", async (ctx) => {
   const userId = ctx.from.id;
-  console.log(2);
+  console.log("Оплата");
+  const paymentAmount = ctx.preCheckoutQuery.total_amount;
+
+  if (paymentAmount !== 5999 * 100) {
+    // Отклонить платёж, если сумма не соответствует ожидаемой
+    await ctx.answerPreCheckoutQuery(false, "Неверная сумма платежа. Попробуйте снова.");
+    return;
+  }
+
   ctx.answerPreCheckoutQuery(true);
 
   // Устанавливаем таймер на уведомление о незавершенном платеже
