@@ -67,7 +67,7 @@ const smm = async (ctx, text) => {
                       ],
                       [
                         {
-                          text: "Купить курс",
+                          text: "Записаться на курс",
                           callback_data: "buyFile",
                         },
                       ],
@@ -193,7 +193,7 @@ bot.on("pre_checkout_query", async (ctx) => {
 }); // ответ на предварительный запрос по оплате
 
 bot.on("successful_payment", async (ctx) => {
-  if (ctx.message.successful_payment.total_amount === 4999) {
+  if (ctx.message.successful_payment.total_amount === 5999 * 100) {
     updateUserByPaid(ctx.message.from.id);
   }
   if (ctx.message.successful_payment.total_amount === 6500) {
