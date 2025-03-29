@@ -305,7 +305,7 @@ bot.on("successful_payment", async (ctx) => {
 
       // Отправляем сообщение об успешной оплате
       let successMessage = "";
-      let imageFile = "start.JPG";
+      let imageFile = "start.jpg";
 
       // Определяем сообщение в зависимости от суммы платежа
       if (payment.total_amount === CONSTANTS.PRICES.LOW_PRICE) {

@@ -391,7 +391,7 @@ const callbackQueryHandler = async (ctx) => {
       case "program_course":
         await sendPhotoWithCaption(
           ctx,
-          "program.JPG",
+          "program.jpg",
           `Курс тренировок для девушек 
 «Стройная и сочная»
 
@@ -408,7 +408,7 @@ const callbackQueryHandler = async (ctx) => {
       case "contraindications":
         await sendPhotoWithCaption(
           ctx,
-          "contraindications.JPG",
+          "contraindications.jpg",
           `• Выраженная гипертония
 • ЛОР-заболевания
 • Беременность
@@ -439,7 +439,7 @@ const callbackQueryHandler = async (ctx) => {
       case "format":
         await sendPhotoWithCaption(
           ctx,
-          "format.JPG",
+          "format.jpg",
           `Старт фитнес курса - 14 апреля 
 Длительность проекта - 4 недели
 
