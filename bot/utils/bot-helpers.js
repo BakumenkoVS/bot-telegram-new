@@ -18,7 +18,7 @@ const CONSTANTS = {
   },
   TIMEOUTS: {
     REMINDER_TIMEOUT: 24 * 60 * 60 * 1000, // 24 часа
-    CHOICE_REMINDER_TIMEOUT: 1 * 60 * 1000, // 1 минута для отправки напоминания о выборе
+    CHOICE_REMINDER_TIMEOUT: 24 * 60 * 60 * 1000, // 24 часа для отправки напоминания о выборе
   },
   COMMANDS: {
     START_ADMIN: "/start Lida123123",
