@@ -86,18 +86,26 @@ const broadcastMessage = async (ctx, text, buttons = [], photoUrl = null, photoP
 
       // Каждая кнопка в отдельном ряду
       buttons.forEach((button) => {
-        inlineKeyboard.push([
-          {
-            text: button.text,
-            callback_data: button.callback_data,
-          },
-        ]);
+        // Проверяем, что у кнопки есть либо callback_data, либо url
+        if (button.callback_data || button.url) {
+          inlineKeyboard.push([
+            {
+              text: button.text,
+              ...(button.callback_data && { callback_data: button.callback_data }),
+              ...(button.url && { url: button.url }),
+            },
+          ]);
+        } else {
+          console.log(`Пропущена кнопка без обязательных атрибутов: ${button.text}`);
+        }
       });
 
-      // Добавляем клавиатуру к опциям сообщения
-      messageOptions.reply_markup = {
-        inline_keyboard: inlineKeyboard,
-      };
+      // Добавляем клавиатуру к опциям сообщения только если есть корректные кнопки
+      if (inlineKeyboard.length > 0) {
+        messageOptions.reply_markup = {
+          inline_keyboard: inlineKeyboard,
+        };
+      }
     }
 
     // Определяем, есть ли фото для отправки
