@@ -43,7 +43,16 @@ const getButtons = {
     ],
     [
       {
-        text: "Посмотреть тарифы",
+        text: "Выбрать тариф",
+        callback_data: "Tariff_selection",
+      },
+    ],
+  ],
+
+  programCourseButtons1: [
+    [
+      {
+        text: "Выбрать тариф",
         callback_data: "Tariff_selection",
       },
     ],
@@ -85,7 +94,7 @@ const getButtons = {
     ],
     [
       {
-        text: "Посмотреть тарифы",
+        text: "Выбрать тариф",
         callback_data: "Tariff_selection",
       },
     ],
@@ -106,7 +115,7 @@ const getButtons = {
     ],
     [
       {
-        text: "Посмотреть тарифы",
+        text: "Выбрать тариф",
         callback_data: "Tariff_selection",
       },
     ],
@@ -121,7 +130,7 @@ const getButtons = {
     ],
     [
       {
-        text: "Посмотреть тарифы",
+        text: "Выбрать тариф",
         callback_data: "Tariff_selection",
       },
     ],
@@ -136,7 +145,7 @@ const getButtons = {
     ],
     [
       {
-        text: "Посмотреть тарифы",
+        text: "Выбрать тариф",
         callback_data: "Tariff_selection",
       },
     ],
@@ -151,7 +160,7 @@ const getButtons = {
     ],
     [
       {
-        text: "Посмотреть тарифы",
+        text: "Выбрать тариф",
         callback_data: "Tariff_selection",
       },
     ],
@@ -224,6 +233,57 @@ const getButtons = {
       {
         text: "Посмотреть программу",
         callback_data: "program_course",
+      },
+    ],
+  ],
+
+  testSelectionButtons: [
+    [
+      {
+        text: "1",
+        callback_data: "test_1_stomach",
+      },
+    ],
+    [
+      {
+        text: "2",
+        callback_data: "test_2_stomach",
+      },
+    ],
+  ],
+
+  test1StomachButtons: [
+    [
+      {
+        text: "Расскажи подробнее",
+        callback_data: "test_1_stomach_info",
+      },
+    ],
+  ],
+
+  testStomachInfoButtons: [
+    [
+      {
+        text: "С чего начать?",
+        callback_data: "program_course1",
+      },
+    ],
+  ],
+
+  test2StomachButtons: [
+    [
+      {
+        text: "Расскажи подробнее",
+        callback_data: "test_2_stomach_info",
+      },
+    ],
+  ],
+
+  testSmmButtons: [
+    [
+      {
+        text: "Пройти тест",
+        callback_data: "test_selection",
       },
     ],
   ],
@@ -490,6 +550,29 @@ const callbackQueryHandler = async (ctx) => {
         );
         break;
 
+      case "program_course1":
+        await sendPhotoWithCaption(
+          ctx,
+          "program.jpg",
+          `Курс домашних тренировок для девушек
+<b>'Стройная и сочная'</b>
+
+<i>Старт курса - 14 апреля</i>
+<i>Длительность - 4 недели</i>
+
+Тренировки направлены на <b>улучшение осанки и мобильности позвоночника</b>, укрепление мышц <b>пресса и ягодиц</b>.
+
+Перед стартом курса каждая участница получает от меня <b>краткую диагностику осанки</b>. 
+
+Вас ждет <b>16+4 тренировок</b>, которые можно выполнять дома, они будут выходить <b>4 раза в неделю</b> в записи, заниматься можно в любое удобное для вас время.
+
+В чате участниц вы сможете <b>задать вопрос</b> мне, получить <b>обратную связь по технике упражнений</b> и общаться с другими девушками. 
+
+<b>Доступ к тренировкам - 3 месяца</b>.`,
+          getButtons.programCourseButtons1
+        );
+        break;
+
       case "contraindications":
         await sendPhotoWithCaption(
           ctx,
@@ -531,6 +614,79 @@ const callbackQueryHandler = async (ctx) => {
 Все тренировки будут выходить 4 раза в неделю в записи на ютубе и рутубе, длительность каждой тренировки до 30 минут, формат «смотри и делай вместе со мной», вы сможете заниматься в любое удобное время, включив тренировку на телефоне или компьютере. Вся полезная информация будет выходить в закрытом тг канале, а в чате фитнес курса вы сможете получить от меня обратную связь по технике, задать вопрос и общаться с другими участницами`,
           getButtons.formatButtons
         );
+        break;
+
+      case "test_selection":
+        await sendPhotoWithCaption(
+          ctx,
+          "test_selection.jpg",
+          `Как выглядит твой живот?
+
+1 - меня путают с беременной, живот выглядит как надутый шар в течение всего дня
+
+2 - плоский верх живота и сильный валик внизу в районе пупка`,
+          getButtons.testSelectionButtons
+        );
+        break;
+
+      case "test_1_stomach":
+        await sendPhotoWithCaption(
+          ctx,
+          "test_1_stomach.jpg",
+          `Если твой живот выглядит как на первых месяцах беременности, то у тебя передний наклон таза (или гиперлордоз), такое нарушение осанки является неочевидной причиной выпирающего живота, которая НЕ связана с лишним весом`,
+          getButtons.test1StomachButtons
+        );
+        break;
+
+      case "test_1_stomach_info":
+        await sendPhotoWithCaption(
+          ctx,
+          "test_1_stomach_info.jpg",
+          `*на фото - результат моей клиентки <b>за 4 недели на фитнес-курсе</b>
+
+При таком нарушении осанки, сколько бы ты ни старалась — хоть с диетой, хоть с упражнениями на пресс — живот всё равно будет выпирать. Почему? Потому что <b>дело не в лишнем весе, а в положении тела</b>.
+
+Здесь важно делать <b>упражнения</b>, которые снижают <b>нагрузку с поясничного отдела</b>; вернуть <b>таз в нейтраль</b> и укреплять <b>глубокие мышцы пресса</b>.`,
+          getButtons.testStomachInfoButtons
+        );
+        break;
+
+      case "test_2_stomach":
+        await sendPhotoWithCaption(
+          ctx,
+          "test_2_stomach.jpg",
+          `Если твой живот сверху плоский, а внизу около пупка есть "валик", то у тебя задний наклон таза.
+
+Такое нарушение осанки приводит к отечности и запасам жира именно в нижней части живота.`,
+          getButtons.test2StomachButtons
+        );
+        break;
+
+      case "test_2_stomach_info":
+        await sendPhotoWithCaption(
+          ctx,
+          "test_2_stomach_info.jpg",
+          `*на фото - <b>результат моей клиентки за 4 недели</b> на курсе
+
+Даже если ты сбросишь вес и будешь качать пресс до посинения, этот упрямый "валик" внизу живота никуда не денется.
+
+Здесь <b>важно работать с осанкой</b> и делать упражнения, которые вернут <b>таз в нейтральное положение</b> и укрепят <b>мышцы тазового дня</b>.`,
+          getButtons.testStomachInfoButtons
+        );
+        break;
+
+      case "tests":
+        await sendPhotoWithCaption(
+          ctx,
+          "test_smm.jpg",
+          `Думаешь, плоский живот — это только про «меньше есть и худеть»? А вот и нет!
+
+Всё дело в осанке, которая незаметно саботирует твои усилия. 
+
+<b>Пройди тест "Какой у тебя тип живота?"</b> — и я подскажу, что мешает сделать живот плоским.`,
+          getButtons.testSmmButtons
+        );
+        break;
     }
   } catch (error) {
     logError(error, "callback_query_handler");

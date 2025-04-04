@@ -3,11 +3,7 @@ const { saveUser } = require("../../common/sequelize/user-model.sequelize.js");
 require("dotenv").config();
 
 // Импортируем утилиты из общего файла
-const {
-  CONSTANTS,
-  sendPhotoWithCaption,
-  logError,
-} = require("../../utils/bot-helpers.js");
+const { CONSTANTS, sendPhotoWithCaption, logError } = require("../../utils/bot-helpers.js");
 
 // Кнопки для стартового сообщения
 const startButtons = [
@@ -15,6 +11,12 @@ const startButtons = [
     {
       text: "Это мне надо",
       callback_data: "second_message",
+    },
+  ],
+  [
+    {
+      text: "Пройти тесты",
+      callback_data: "tests",
     },
   ],
 ];
