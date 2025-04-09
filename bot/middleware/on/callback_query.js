@@ -191,7 +191,7 @@ const getButtons = {
   priceSelectionButtons: [
     [
       {
-        text: `Посмотреть тариф 'попробовать')`,
+        text: `Посмотреть тариф 'попробовать'`,
         callback_data: "Low_tariff",
       },
     ],
