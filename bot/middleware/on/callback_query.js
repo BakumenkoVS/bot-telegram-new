@@ -191,19 +191,19 @@ const getButtons = {
   priceSelectionButtons: [
     [
       {
-        text: `Тариф 'попробовать' (${CONSTANTS.PRICES.LOW_PRICE / 100}₽)`,
+        text: `Посмотреть тариф 'попробовать')`,
         callback_data: "Low_tariff",
       },
     ],
     [
       {
-        text: `Тариф 'врываюсь' (${CONSTANTS.PRICES.MIDDLE_PRICE / 100}₽)`,
+        text: `Посмотреть тариф 'врываюсь'`,
         callback_data: "Middle_tariff",
       },
     ],
     [
       {
-        text: `Тариф 'с Лидой' (${CONSTANTS.PRICES.HIGH_PRICE / 100}₽)`,
+        text: `Посмотреть тариф 'с Лидой'`,
         callback_data: "High_tariff",
       },
     ],
@@ -298,7 +298,7 @@ const callbackQueryHandler = async (ctx) => {
     switch (callbackData) {
       case "Tariff_selection":
         // Вместо прямой отправки счета, показываем меню выбора тарифа
-        await ctx.reply("Выберите подходящий тариф:", {
+        await ctx.reply("Чтобы ознакомиться с описанием тарифа нажмите на кнопку:", {
           parse_mode: CONSTANTS.PARSE_MODE,
           reply_markup: {
             inline_keyboard: getButtons.priceSelectionButtons,
