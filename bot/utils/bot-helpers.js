@@ -8,8 +8,8 @@ const CONSTANTS = {
   IMG_DIR: "img",
   CURRENCY: "RUB",
   PRICES: {
-    LOW_PRICE: 5490 * 100, // в копейках
-    MIDDLE_PRICE: 6490 * 100, // в копейках
+    LOW_PRICE: 5999 * 100, // в копейках
+    MIDDLE_PRICE: 6999 * 100, // в копейках
     HIGH_PRICE: 15990 * 100, // в копейках
     TEST_PRICE: 65 * 100, // в копейках
   },
